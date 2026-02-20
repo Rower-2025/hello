@@ -1,0 +1,241 @@
+<!DOCTYPE html> <!-- HTML5文档类型声明，告诉浏览器使用HTML5标准解析页面 -->
+<html lang="zh-CN"> <!-- HTML根元素，lang属性指定页面语言为中文（中国大陆） -->
+<head> <!-- 头部区域，包含页面的元数据、标题和样式 -->
+    <meta charset="UTF-8"> <!-- 字符编码声明，使用UTF-8编码支持中文等多语言 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 视口设置，确保在移动设备上正确显示 -->
+    <title>梦游天姥吟留别</title> <!-- 页面标题，显示在浏览器标签栏 -->
+    <style> <!-- 内联CSS样式定义区域 -->
+        /* 全局样式重置和基础设置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body { /* 定义body元素的样式 */
+            font-family: "SimSun", "STSong", serif; /* 设置字体为宋体，用于显示中文诗歌 */
+            background-color: #f8f9fa; /* 设置背景颜色为浅灰色，作为页面背景 */
+            color: #333; /* 全局文本颜色 */
+            line-height: 1.6; /* 全局行高 */
+        }
+        
+        /* 容器样式 */
+        .container { /* 定义.container类的样式，用于包裹页面内容 */
+            max-width: 1200px; /* 设置最大宽度为1200像素，适应更大屏幕 */
+            margin: 0 auto; /* 上下外边距为0，左右自动居中 */
+            padding: 40px 20px; /* 上下内边距为40像素，左右为20像素，增加内容与边框的距离 */
+        }
+        
+        /* 页面标题 */
+        .page-title { /* 定义.page-title类的样式，用于页面主标题 */
+            text-align: center; /* 文本居中对齐 */
+            margin-bottom: 50px; /* 底部外边距为50像素，与下方内容保持距离 */
+        }
+        
+        .page-title h1 { /* 定义.page-title类内h1元素的样式 */
+            font-size: 2.8em; /* 字体大小为默认大小的2.8倍 */
+            color: #2c3e50; /* 文本颜色为深蓝色 */
+            margin-bottom: 10px; /* 底部外边距为10像素，与下方内容保持距离 */
+        }
+        
+        .page-title p { /* 定义.page-title类内p元素的样式 */
+            font-size: 1.2em; /* 字体大小为默认大小的1.2倍 */
+            color: #7f8c8d; /* 文本颜色为中灰色 */
+        }
+        
+        /* 卡片样式 */
+        .card { /* 定义.card类的样式，用于卡片式布局 */
+            background-color: white; /* 卡片背景颜色为白色（主色） */
+            border-radius: 12px; /* 边框圆角为12像素，增加美观度 */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* 添加阴影效果，增强立体感 */
+            padding: 30px; /* 内边距为30像素，增加卡片内部空间 */
+            margin-bottom: 30px; /* 底部外边距为30像素，控制卡片之间的距离 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* 添加过渡效果，增强交互体验 */
+        }
+        
+        .card:hover { /* 定义.card类的悬停状态样式 */
+            transform: translateY(-5px); /* 悬停时卡片向上移动5像素 */
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); /* 悬停时增加阴影效果 */
+        }
+        
+        /* 卡片标题 */
+        .card-title { /* 定义.card-title类的样式，用于卡片标题 */
+            font-size: 1.8em; /* 字体大小为默认大小的1.8倍 */
+            color: #3498db; /* 文本颜色为蓝色（辅助色） */
+            margin-bottom: 20px; /* 底部外边距为20像素，与下方内容保持距离 */
+            padding-bottom: 15px; /* 底部内边距为15像素，增加标题与内容的距离 */
+            border-bottom: 3px solid #f39c12; /* 底部边框为3像素实线，颜色为黄色（点缀色） */
+        }
+        
+        /* 诗歌卡片样式 */
+        .poem-card .poem-content { /* 定义.poem-card类内.poem-content元素的样式，用于诗歌内容 */
+            text-align: center; /* 文本居中对齐，适合诗歌排版 */
+            line-height: 2.2; /* 行高为2.2倍，增加诗句之间的间距 */
+            font-size: 1.1em; /* 字体大小为默认大小的1.1倍，提高可读性 */
+            color: #2c3e50; /* 文本颜色为深蓝色 */
+        }
+        
+        .poem-card .poem-content p { /* 定义.poem-card类内.poem-content元素内p元素的样式，用于每一行诗句 */
+            margin: 8px 0; /* 上下外边距为8像素，左右为0，控制诗句间距 */
+        }
+        
+        /* 媒体卡片样式 */
+        .media-card .media-item { /* 定义.media-card类内.media-item元素的样式，用于媒体内容项 */
+            margin-bottom: 30px; /* 底部外边距为30像素，控制媒体项之间的距离 */
+        }
+        
+        .media-card .media-item h3 { /* 定义.media-card类内.media-item元素内h3元素的样式，用于媒体项标题 */
+            font-size: 1.3em; /* 字体大小为默认大小的1.3倍 */
+            color: #3498db; /* 文本颜色为蓝色（辅助色） */
+            margin-bottom: 15px; /* 底部外边距为15像素，与下方媒体内容保持距离 */
+        }
+        
+        .media-card .image-container, /* 同时定义.media-card类内.image-container和.video-container元素的样式 */
+        .media-card .video-container {
+            text-align: center; /* 内容居中对齐 */
+        }
+        
+        .media-card img { /* 定义.media-card类内img元素的样式，用于图片 */
+            max-width: 100%; /* 最大宽度为100%，确保图片在容器内自适应 */
+            height: auto; /* 高度自动调整，保持图片比例 */
+            border-radius: 8px; /* 边框圆角为8像素，增加美观度 */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 添加阴影效果，增强立体感 */
+        }
+        
+        .media-card video { /* 定义.media-card类内video元素的样式，用于视频 */
+            max-width: 100%; /* 最大宽度为100%，确保视频在容器内自适应 */
+            height: auto; /* 高度自动调整，保持视频比例 */
+            border-radius: 8px; /* 边框圆角为8像素，增加美观度 */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 添加阴影效果，增强立体感 */
+        }
+        
+        .media-card .video-info { /* 定义.media-card类内.video-info元素的样式，用于视频信息 */
+            margin-top: 10px; /* 顶部外边距为10像素，与视频保持距离 */
+            font-size: 0.9em; /* 字体大小为默认大小的0.9倍 */
+            color: #7f8c8d; /* 文本颜色为中灰色 */
+            text-align: center; /* 文本居中对齐 */
+        }
+        
+        /* 链接卡片样式 */
+        .links-card .link-item { /* 定义.links-card类内.link-item元素的样式，用于链接项 */
+            margin-bottom: 15px; /* 底部外边距为15像素，控制链接项之间的距离 */
+        }
+        
+        .links-card a { /* 定义.links-card类内a元素的样式，用于超链接 */
+            display: inline-block; /* 显示为内联块元素，方便添加内边距 */
+            padding: 12px 24px; /* 上下内边距为12像素，左右为24像素，增加点击区域 */
+            background-color: #3498db; /* 背景颜色为蓝色（辅助色） */
+            color: white; /* 文本颜色为白色 */
+            text-decoration: none; /* 移除默认下划线 */
+            border-radius: 25px; /* 边框圆角为25像素，增加美观度 */
+            font-size: 1.1em; /* 字体大小为默认大小的1.1倍 */
+            transition: all 0.3s ease; /* 添加过渡效果，增强交互体验 */
+            box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3); /* 添加阴影效果，增强立体感 */
+        }
+        
+        .links-card a:hover { /* 定义.links-card类内a元素的悬停状态样式 */
+            background-color: #2980b9; /* 悬停时背景颜色变为深蓝色 */
+            transform: translateY(-2px); /* 悬停时链接向上移动2像素 */
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4); /* 悬停时增加阴影效果 */
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) { /* 当屏幕宽度小于等于768像素时应用以下样式 */
+            .container { /* 调整容器样式 */
+                padding: 20px 15px; /* 减少内边距，适应小屏幕 */
+            }
+            
+            .page-title h1 { /* 调整页面标题样式 */
+                font-size: 2.2em; /* 减小字体大小，适应小屏幕 */
+            }
+            
+            .card { /* 调整卡片样式 */
+                padding: 20px; /* 减少内边距，适应小屏幕 */
+            }
+            
+            .card-title { /* 调整卡片标题样式 */
+                font-size: 1.5em; /* 减小字体大小，适应小屏幕 */
+            }
+            
+            .poem-card .poem-content { /* 调整诗歌内容样式 */
+                line-height: 2; /* 减小行高，适应小屏幕 */
+                font-size: 1em; /* 减小字体大小，适应小屏幕 */
+            }
+        }
+    </style> <!-- CSS样式定义结束 -->
+</head> <!-- 头部区域结束 -->
+<body> <!-- 页面主体区域，包含所有可见内容 -->
+    <div class="container"> <!-- 内容容器，应用.container样式 -->
+        <!-- 页面标题区域 -->
+        <div class="page-title"> <!-- 页面标题容器，应用.page-title样式 -->
+            <h1>梦游天姥吟留别</h1> <!-- 一级标题，显示页面主标题 -->
+            <p>李白的经典诗作</p> <!-- 页面副标题，显示作者信息 -->
+        </div> <!-- 页面标题容器结束 -->
+        
+        <!-- 诗歌卡片 -->
+        <div id="poems" class="card poem-card"> <!-- 诗歌卡片，应用.card和.poem-card样式，添加ID用于锚点链接 -->
+            <h2 class="card-title">诗歌原文</h2> <!-- 卡片标题，应用.card-title样式 -->
+            <div class="poem-content"> <!-- 诗歌内容容器，应用.poem-content样式 -->
+                <p>海客谈瀛洲，烟涛微茫信难求；</p> <!-- 诗歌第一行 -->
+                <p>越人语天姥，云霞明灭或可睹。</p> <!-- 诗歌第二行 -->
+                <p>天姥连天向天横，势拔五岳掩赤城。</p> <!-- 诗歌第三行 -->
+                <p>天台四万八千丈，对此欲倒东南倾。</p> <!-- 诗歌第四行 -->
+                <p>我欲因之梦吴越，一夜飞度镜湖月。</p> <!-- 诗歌第五行 -->
+                <p>湖月照我影，送我至剡溪。</p> <!-- 诗歌第六行 -->
+                <p>谢公宿处今尚在，渌水荡漾清猿啼。</p> <!-- 诗歌第七行 -->
+                <p>脚著谢公屐，身登青云梯。</p> <!-- 诗歌第八行 -->
+                <p>半壁见海日，空中闻天鸡。</p> <!-- 诗歌第九行 -->
+                <p>千岩万转路不定，迷花倚石忽已暝。</p> <!-- 诗歌第十行 -->
+                <p>熊咆龙吟殷岩泉，栗深林兮惊层巅。</p> <!-- 诗歌第十一行 -->
+                <p>云青青兮欲雨，水澹澹兮生烟。</p> <!-- 诗歌第十二行 -->
+                <p>列缺霹雳，丘峦崩摧。</p> <!-- 诗歌第十三行 -->
+                <p>洞天石扉，訇然中开。</p> <!-- 诗歌第十四行 -->
+                <p>青冥浩荡不见底，日月照耀金银台。</p> <!-- 诗歌第十五行 -->
+                <p>霓为衣兮风为马，云之君兮纷纷而来下。</p> <!-- 诗歌第十六行 -->
+                <p>虎鼓瑟兮鸾回车，仙之人兮列如麻。</p> <!-- 诗歌第十七行 -->
+                <p>忽魂悸以魄动，恍惊起而长嗟。</p> <!-- 诗歌第十八行 -->
+                <p>惟觉时之枕席，失向来之烟霞。</p> <!-- 诗歌第十九行 -->
+                <p>世间行乐亦如此，古来万事东流水。</p> <!-- 诗歌第二十行 -->
+                <p>别君去兮何时还？且放白鹿青崖间。须行即骑访名山。</p> <!-- 诗歌第二十一行 -->
+                <p>安能摧眉折腰事权贵，使我不得开心颜！</p> <!-- 诗歌第二十二行 -->
+            </div> <!-- 诗歌内容容器结束 -->
+        </div> <!-- 诗歌卡片结束 -->
+        
+        <!-- 图片卡片 -->
+        <div id="images" class="card media-card"> <!-- 媒体卡片，应用.card和.media-card样式，添加ID用于锚点链接 -->
+            <h2 class="card-title">相关图片</h2> <!-- 卡片标题，应用.card-title样式 -->
+            <div class="media-item"> <!-- 媒体内容项，应用.media-item样式 -->
+                <h3>图片展示</h3> <!-- 媒体项标题 -->
+                <div class="image-container"> <!-- 图片容器，应用.image-container样式 -->
+                    <img src="12.jpg" alt="图片12"> <!-- 图片元素，显示12.jpg -->
+                </div> <!-- 图片容器结束 -->
+            </div> <!-- 媒体内容项结束 -->
+        </div> <!-- 图片卡片结束 -->
+        
+        <!-- 视频卡片 -->
+        <div id="videos" class="card media-card"> <!-- 媒体卡片，应用.card和.media-card样式，添加ID用于锚点链接 -->
+            <h2 class="card-title">相关视频</h2> <!-- 卡片标题，应用.card-title样式 -->
+            <div class="media-item"> <!-- 媒体内容项，应用.media-item样式 -->
+                <h3>视频播放</h3> <!-- 媒体项标题 -->
+                <div class="video-container"> <!-- 视频容器，应用.video-container样式 -->
+                    <video controls> <!-- 视频元素，显示控制条 -->
+                        <source src="./11.mp4" type="video/mp4"> <!-- 视频源，指定11.mp4文件 -->
+                        您的浏览器不支持视频播放。 <!-- 浏览器不支持视频时显示的文本 -->
+                    </video> <!-- 视频元素结束 -->
+                    <div class="video-info"> <!-- 视频信息容器，应用.video-info样式 -->
+                        <p>视频文件：11.mp4</p> <!-- 显示视频文件信息 -->
+                    </div> <!-- 视频信息容器结束 -->
+                </div> <!-- 视频容器结束 -->
+            </div> <!-- 媒体内容项结束 -->
+        </div> <!-- 视频卡片结束 -->
+        
+        <!-- 链接卡片 -->
+        <div id="links" class="card links-card"> <!-- 链接卡片，应用.card和.links-card样式，添加ID用于锚点链接 -->
+            <h2 class="card-title">相关链接</h2> <!-- 卡片标题，应用.card-title样式 -->
+            <div class="link-item"> <!-- 链接项，应用.link-item样式 -->
+                <a href="https://www.bilibili.com" target="_blank">哔哩哔哩 (bilibili.com)</a> <!-- 超链接，指向哔哩哔哩网站，在新标签页打开 -->
+            </div> <!-- 链接项结束 -->
+        </div> <!-- 链接卡片结束 -->
+    </div> <!-- 内容容器结束 -->
+</body> <!-- 页面主体区域结束 -->
+</html> <!-- HTML文档结束 -->

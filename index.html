@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <style>
+        /* 全局样式重置和基础设置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "SimSun", "STSong", serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* 容器样式 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 导航栏样式 */
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        /* Logo样式 */
+        .logo {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #3498db;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: #f39c12;
+        }
+        
+        /* 导航链接 */
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #3498db;
+        }
+        
+        /* 英雄区域 */
+        .hero {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* 模块网格 */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        /* 模块卡片 */
+        .module-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .module-icon {
+            font-size: 4em;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+        
+        .module-card h2 {
+            font-size: 1.5em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .module-card p {
+            color: #7f8c8d;
+            margin-bottom: 25px;
+        }
+        
+        .module-link {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+        }
+        
+        .module-link:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+        }
+        
+        /* 页脚 */
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer p {
+            margin: 0;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .navbar-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2em;
+            }
+            
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .module-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="index.html" class="logo">W<span>eb</span></a>
+            <div class="nav-links">
+                <a href="#">首页</a>
+                <a href="#">关于</a>
+                <a href="#">联系</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="container">
+            <h1>欢迎访问我的网站</h1>
+            <p>这里包含了诗歌、图片、视频和链接等多种内容，点击下方模块进入对应页面</p>
+        </div>
+    </section>
+    
+    <!-- 模块网格 -->
+    <section class="container">
+        <div class="modules-grid">
+            <!-- 诗歌模块 -->
+            <div class="module-card">
+                <div class="module-icon">📝</div>
+                <h2>诗歌欣赏</h2>
+                <p>欣赏李白的经典诗作《梦游天姥吟留别》，感受古代文学的魅力</p>
+                <a href="poems.html" class="module-link">进入诗歌页</a>
+            </div>
+            
+            <!-- 图片模块 -->
+            <div class="module-card">
+                <div class="module-icon">🖼️</div>
+                <h2>图片展示</h2>
+                <p>浏览精美的图片内容，享受视觉盛宴</p>
+                <a href="images.html" class="module-link">进入图片页</a>
+            </div>
+            
+            <!-- 视频模块 -->
+            <div class="module-card">
+                <div class="module-icon">🎬</div>
+                <h2>视频播放</h2>
+                <p>观看有趣的视频内容，体验动态视觉效果</p>
+                <a href="videos.html" class="module-link">进入视频页</a>
+            </div>
+            
+            <!-- 链接模块 -->
+            <div class="module-card">
+                <div class="module-icon">🔗</div>
+                <h2>相关链接</h2>
+                <p>访问相关网站，获取更多有趣的内容</p>
+                <a href="links.html" class="module-link">进入链接页</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 我的网站 | 设计与开发</p>
+        </div>
+    </footer>
+</body>
+</html>
